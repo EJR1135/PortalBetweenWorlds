@@ -8,6 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.ChunkSource;
 import net.minecraft.world.dimension.Dimension;
 import net.modificationstation.stationapi.api.client.world.dimension.TravelMessageProvider;
 import net.modificationstation.stationapi.api.util.Identifier;
@@ -35,7 +36,7 @@ public class otherWorldDimension extends Dimension implements TravelMessageProvi
 
     @Override
     public ChunkSource createChunkGenerator() {
-        long seed = 123L
+        long seed = 123L;
         return new otherWorldChunkGenerator(world, seed);
     }
     
