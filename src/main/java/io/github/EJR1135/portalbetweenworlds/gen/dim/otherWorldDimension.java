@@ -1,13 +1,13 @@
 package io.github.EJR1135.portalbetweenworlds.gen.dim;
 
-import io.github.EJR1135.portalbetweenworlds.gen.dim.chunkProviderOtherWorld;
+import io.github.EJR1135.portalbetweenworlds.gen.dim.otherWorldChunkGenerator;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvironmentInterface;
 import net.minecraft.block.Block;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.gen.chunk.OverworldChunkGenerator;
+import net.minecraft.world.World;
 import net.minecraft.world.dimension.Dimension;
 import net.modificationstation.stationapi.api.client.world.dimension.TravelMessageProvider;
 import net.modificationstation.stationapi.api.util.Identifier;
@@ -34,10 +34,11 @@ public class otherWorldDimension extends Dimension implements TravelMessageProvi
     */
 
     @Override
-    public void OverworldChunkGenerator(World world, long seed) {
-        long seed = new Random().nextLong();
-        this.world = world;
+    public ChunkSource createChunkGenerator() {
+        long seed = 123L
+        return new otherWorldChunkGenerator(world, seed);
     }
+    
     /*
     @Override
     public float getTimeOfDay(long time, float delta) {
