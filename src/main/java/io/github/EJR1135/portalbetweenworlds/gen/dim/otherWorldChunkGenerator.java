@@ -26,6 +26,7 @@ import net.minecraft.world.gen.feature.PlantPatchFeature;
 import net.minecraft.world.gen.feature.PumpkinPatchFeature;
 import net.minecraft.world.gen.feature.SpringFeature;
 import net.minecraft.world.gen.feature.SugarCanePatchFeature;
+import net.modificationstation.stationapi.impl.world.CaveGenBaseImpl;
 
 public class otherWorldChunkGenerator implements ChunkSource {
 	private Random random;
@@ -42,7 +43,7 @@ public class otherWorldChunkGenerator implements ChunkSource {
 	private double[] sandBuffer = new double[256];
 	private double[] gravelBuffer = new double[256];
 	private double[] depthBuffer = new double[256];
-	private Carver cave = new CaveCarver();
+	private Carver cave;
 	private Biome[] biomes;
 	double[] perlinNoiseBuffer;
 	double[] minLimitPerlinNoiseBuffer;
@@ -63,6 +64,11 @@ public class otherWorldChunkGenerator implements ChunkSource {
 		this.floatingIslandScale = new OctavePerlinNoiseSampler(this.random, 10);
 		this.floatingIslandNoise = new OctavePerlinNoiseSampler(this.random, 16);
 		this.forestNoise = new OctavePerlinNoiseSampler(this.random, 8);
+
+		this.cave = new CaveCarver();
+		if (this.cave instanceof CaveGenBaseImpl caveGen) {
+    		caveGen.stationapi_setWorld(this.world);
+		}
 	}
 
 	public void buildTerrain(int chunkX, int chunkZ, byte[] blocks, Biome[] biomes, double[] temperatures) {
