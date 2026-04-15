@@ -94,7 +94,8 @@ public class otherWorldDimension extends Dimension implements TravelMessageProvi
     public String getLeavingTranslationKey() {
         return LEAVING_MESSAGE;
     }
-
+    
+    //bed boom fix 
     @Override
     public boolean hasWorldSpawn() {
         return true;
