@@ -19,8 +19,13 @@ public class otherWorldBlocks {
 
     @EventListener
     public void registerBlocks(BlockRegistryEvent event) {
-        Portal = (new otherWorldPortal(Identifier.of(MOD_ID, "otherWorld_portal"))).setHardness(-1.0F).setResistance(6000000.0F).setTranslationKey(MOD_ID, "otherWorld_portal");
-        portalFrame = (new otherWorldPortal(Identifier.of(MOD_ID, "otherWorld_portalframe"))).setHardness(0.5F).setSoundGroup(Block.STONE_SOUND_GROUP).setTranslationKey(MOD_ID, "otherWorld_portalframe");
+        Portal = (new otherWorldPortal(Identifier.of(MOD_ID, "otherWorld_portal"))).setHardness(-1.0F).setLuminance(0.5F).setResistance(6000000.0F).setTranslationKey(MOD_ID, "otherWorld_portal");
+        portalFrame = new otherWorldPortalFrame(
+            Identifier.of(MOD_ID, "portal_frame")
+        )
+        .setHardness(1.0F)
+        .setSoundGroup(Block.STONE_SOUND_GROUP)
+        .setTranslationKey(MOD_ID, "portal_frame");
         //otherWorldItems.Aercloud = (new ItemBlockAercloud(Aercloud.id));
 
         /*

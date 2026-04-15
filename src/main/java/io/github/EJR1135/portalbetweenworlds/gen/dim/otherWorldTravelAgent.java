@@ -235,7 +235,7 @@ public class otherWorldTravelAgent extends PortalForcer {
                         k9 = i3 + i7;
                         l10 = k3 + (l5 - 1) * j4 - l4 * i4;
                         flag = i7 < 0;
-                        world.setBlock(j8, k9, l10, flag ? Block.GLOWSTONE.id : 0);
+                        world.setBlock(j8, k9, l10, flag ? otherWorldBlocks.portalFrame.id : 0);
                     }
                 }
             }
@@ -250,7 +250,7 @@ public class otherWorldTravelAgent extends PortalForcer {
                     k9 = i3 + i7;
                     l10 = k3 + (l5 - 1) * j4;
                     flag = l5 == 0 || l5 == 3 || i7 == -1 || i7 == 3;
-                    world.setBlock(j8, k9, l10, flag ? Block.GLOWSTONE.id : otherWorldBlocks.Portal.id);
+                    world.setBlock(j8, k9, l10, flag ? otherWorldBlocks.portalFrame.id : otherWorldBlocks.Portal.id);
                 }
             }
 

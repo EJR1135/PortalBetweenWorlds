@@ -6,15 +6,27 @@ import net.minecraft.stat.Stats;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.template.block.TemplateBlock;
 import net.modificationstation.stationapi.api.util.Identifier;
+import java.util.Random;
+import net.minecraft.block.Block;
 
 public class otherWorldPortalFrame extends TemplateBlock {
 
     public otherWorldPortalFrame(Identifier identifier) {
-        super(identifier, Material.SOIL);
+        super(identifier, Material.STONE);
     }
 
     public boolean isOpaque() {
         return true;
+    }
+
+    @Override
+    public int getDroppedItemId(int meta, Random random) {
+        return Block.GLOWSTONE.id;
+    }
+
+    @Override
+    public int getDroppedItemCount(Random random) {
+        return 1 + random.nextInt(4); 
     }
 
     public void onPlaced(World world, int i, int j, int k, int l) {

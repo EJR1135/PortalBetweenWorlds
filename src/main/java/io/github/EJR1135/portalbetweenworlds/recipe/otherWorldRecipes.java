@@ -16,11 +16,20 @@ public class otherWorldRecipes {
         RecipeRegisterEvent.Vanilla type = RecipeRegisterEvent.Vanilla.fromType(event.recipeId);
         switch (Objects.requireNonNull(type)) {
             case CRAFTING_SHAPELESS -> {
-                CraftingRegistry.addShapelessRecipe(new ItemStack(Block.GLOWSTONE, 4), otherWorldBlocks.portalFrame);
+                CraftingRegistry.addShapelessRecipe(
+                    new ItemStack(Block.GLOWSTONE, 4),
+                    new ItemStack(otherWorldBlocks.portalFrame)
+                );
             }
             case CRAFTING_SHAPED -> {
-                
+                    CraftingRegistry.addShapedRecipe(
+                        new ItemStack(otherWorldBlocks.portalFrame, 1),
+                        "GG",
+                        "GG",
+                        'G', Block.GLOWSTONE
+                    );
+                }
             }
         }
     }
-}
+

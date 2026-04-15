@@ -12,12 +12,24 @@ import io.github.EJR1135.portalbetweenworlds.block.otherWorldBlocks;
 public class portalListener {
     @EventListener
     public static void blockSet(BlockSetEvent event) {
-        if (
-                (event.blockState.getBlock().id == Block.WATER.id || event.blockState.getBlock().id == Block.FLOWING_WATER.id) &&
-                        event.world.getBlockId(event.x, event.y - 1, event.z) == Block.GLOWSTONE.id && ((otherWorldPortal) otherWorldBlocks.Portal).create(event.world, event.x, event.y, event.z)
-        ) {
-            event.cancel();
-            event.world.setBlock(event.x, event.y, event.z, otherWorldBlocks.Portal.id);
+
+        boolean isWater =
+                event.blockState.getBlock().id == Block.WATER.id ||
+                event.blockState.getBlock().id == Block.FLOWING_WATER.id;
+
+        boolean isFire =
+            event.blockState.getBlock().id == Block.FIRE.id;
+
+        int blockBelow = event.world.getBlockId(event.x, event.y - 1, event.z);
+
+        boolean isValidFrame =
+                blockBelow == otherWorldBlocks.portalFrame.id;
+
+        if (isWater && isValidFrame || isFire && isValidFrame) {
+            if (((otherWorldPortal) otherWorldBlocks.Portal).create(event.world, event.x, event.y, event.z)) {
+                event.cancel();
+                event.world.setBlock(event.x, event.y, event.z, otherWorldBlocks.Portal.id);
+            }
         }
     }
 }

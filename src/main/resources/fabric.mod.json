@@ -21,6 +21,7 @@
     "stationapi:event_bus": [
       "io.github.EJR1135.portalbetweenworlds.events.init.InitListener",
       "io.github.EJR1135.portalbetweenworlds.block.otherWorldBlocks",
+      "io.github.EJR1135.portalbetweenworlds.recipe.otherWorldRecipes",
       "io.github.EJR1135.portalbetweenworlds.gen.dim.portal.portalListener",
       "io.github.EJR1135.portalbetweenworlds.gen.dim.otherWorldDimensions"
     ],

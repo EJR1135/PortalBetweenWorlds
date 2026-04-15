@@ -63,12 +63,12 @@ public class otherWorldPortal extends TranslucentBlock implements BlockTemplate,
         System.out.println("creating");
         int l = 0;
         int i1 = 0;
-        if (world.getBlockId(i - 1, j, k) == Block.GLOWSTONE.id || world.getBlockId(i + 1, j, k) == Block.GLOWSTONE.id) {
+        if (world.getBlockId(i - 1, j, k) == otherWorldBlocks.portalFrame.id || world.getBlockId(i + 1, j, k) == otherWorldBlocks.portalFrame.id) {
             l = 1;
             System.out.println("first conditional");
         }
 
-        if (world.getBlockId(i, j, k - 1) == Block.GLOWSTONE.id || world.getBlockId(i, j, k + 1) == Block.GLOWSTONE.id) {
+        if (world.getBlockId(i, j, k - 1) == otherWorldBlocks.portalFrame.id || world.getBlockId(i, j, k + 1) == otherWorldBlocks.portalFrame.id) {
             i1 = 1;
             System.out.println("second conditional");
         }
@@ -91,7 +91,7 @@ public class otherWorldPortal extends TranslucentBlock implements BlockTemplate,
                     if (k1 != -1 && k1 != 2 || i2 != -1 && i2 != 3) {
                         int j2 = world.getBlockId(i + l * k1, j + i2, k + i1 * k1);
                         if (flag) {
-                            if (j2 != Block.GLOWSTONE.id) {
+                            if (j2 != otherWorldBlocks.portalFrame.id) {
                                 return false;
                             }
                         } else if (j2 != 0 && j2 != Block.FLOWING_WATER.id) {
@@ -127,19 +127,19 @@ public class otherWorldPortal extends TranslucentBlock implements BlockTemplate,
         for (k1 = j; world.getBlockId(i, k1 - 1, k) == this.id; --k1) {
         }
 
-        if (world.getBlockId(i, k1 - 1, k) != Block.GLOWSTONE.id) {
+        if (world.getBlockId(i, k1 - 1, k) != otherWorldBlocks.portalFrame.id) {
             world.setBlock(i, j, k, 0);
         } else {
             int l1;
             for (l1 = 1; l1 < 4 && world.getBlockId(i, k1 + l1, k) == this.id; ++l1) {
             }
 
-            if (l1 == 3 && world.getBlockId(i, k1 + l1, k) == Block.GLOWSTONE.id) {
+            if (l1 == 3 && world.getBlockId(i, k1 + l1, k) == otherWorldBlocks.portalFrame.id) {
                 boolean flag = world.getBlockId(i - 1, j, k) == this.id || world.getBlockId(i + 1, j, k) == this.id;
                 boolean flag1 = world.getBlockId(i, j, k - 1) == this.id || world.getBlockId(i, j, k + 1) == this.id;
                 if (flag && flag1) {
                     world.setBlock(i, j, k, 0);
-                } else if ((world.getBlockId(i + i1, j, k + j1) != Block.GLOWSTONE.id || world.getBlockId(i - i1, j, k - j1) != this.id) && (world.getBlockId(i - i1, j, k - j1) != Block.GLOWSTONE.id || world.getBlockId(i + i1, j, k + j1) != this.id)) {
+                } else if ((world.getBlockId(i + i1, j, k + j1) != otherWorldBlocks.portalFrame.id || world.getBlockId(i - i1, j, k - j1) != this.id) && (world.getBlockId(i - i1, j, k - j1) != otherWorldBlocks.portalFrame.id || world.getBlockId(i + i1, j, k + j1) != this.id)) {
                     world.setBlock(i, j, k, 0);
                 }
             } else {
