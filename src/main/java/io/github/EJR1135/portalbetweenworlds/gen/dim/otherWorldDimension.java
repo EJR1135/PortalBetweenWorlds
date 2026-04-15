@@ -1,20 +1,12 @@
 package io.github.EJR1135.portalbetweenworlds.gen.dim;
 
-import io.github.EJR1135.portalbetweenworlds.gen.dim.otherWorldChunkGenerator;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvironmentInterface;
 import net.minecraft.block.Block;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.World;
 import net.minecraft.world.chunk.ChunkSource;
 import net.minecraft.world.dimension.Dimension;
 import net.modificationstation.stationapi.api.client.world.dimension.TravelMessageProvider;
-import net.modificationstation.stationapi.api.util.Identifier;
-import java.util.Random;
-
-import static io.github.EJR1135.portalbetweenworlds.gen.dim.otherWorldDimensions.MOD_ID;
 
 @EnvironmentInterface(value = EnvType.CLIENT, itf = TravelMessageProvider.class)
 public class otherWorldDimension extends Dimension implements TravelMessageProvider {
@@ -91,11 +83,6 @@ public class otherWorldDimension extends Dimension implements TravelMessageProvi
         return var3 != 0 && Block.BLOCKS[var3].material.blocksMovement();
     }
 
-    @Override
-    public boolean hasWorldSpawn() {
-        return false;
-    }
-
     @Environment(EnvType.CLIENT)
     @Override
     public String getEnteringTranslationKey() {
@@ -107,4 +94,10 @@ public class otherWorldDimension extends Dimension implements TravelMessageProvi
     public String getLeavingTranslationKey() {
         return LEAVING_MESSAGE;
     }
+
+    @Override
+    public boolean hasWorldSpawn() {
+        return true;
+    }
+
 }
