@@ -27,6 +27,7 @@ import net.minecraft.world.gen.feature.PumpkinPatchFeature;
 import net.minecraft.world.gen.feature.SpringFeature;
 import net.minecraft.world.gen.feature.SugarCanePatchFeature;
 import net.modificationstation.stationapi.impl.world.CaveGenBaseImpl;
+import net.modificationstation.stationapi.impl.world.chunk.FlattenedChunk;
 
 public class otherWorldChunkGenerator implements ChunkSource {
 	private Random random;
@@ -216,22 +217,23 @@ public class otherWorldChunkGenerator implements ChunkSource {
 	}
 
 	@Override
-	public Chunk loadChunk(int chunkX, int chunkZ) {
+	public FlattenedChunk loadChunk(int chunkX, int chunkZ) {
 		return this.getChunk(chunkX, chunkZ);
 	}
 
 	@Override
-	public Chunk getChunk(int chunkX, int chunkZ) {
+	public FlattenedChunk getChunk(int chunkX, int chunkZ) {
 		this.random.setSeed(chunkX * 341873128712L + chunkZ * 132897987541L);
 		byte[] var3 = new byte[32768];
-		Chunk var4 = new Chunk(this.world, var3, chunkX, chunkZ);
+		FlattenedChunk chunk = new FlattenedChunk(this.world, chunkX, chunkZ);
 		this.biomes = this.world.method_1781().getBiomesInArea(this.biomes, chunkX * 16, chunkZ * 16, 16, 16);
-		double[] var5 = this.world.method_1781().temperatureMap;
-		this.buildTerrain(chunkX, chunkZ, var3, this.biomes, var5);
+		double[] temp = this.world.method_1781().temperatureMap;
+		this.buildTerrain(chunkX, chunkZ, var3, this.biomes, temp);
 		this.buildSurfaces(chunkX, chunkZ, var3, this.biomes);
 		this.cave.carve(this, this.world, chunkX, chunkZ, var3);
-		var4.populateHeightMap();
-		return var4;
+		chunk.fromLegacy(var3);
+		chunk.populateHeightMap();
+		return chunk;
 	}
 
 	private double[] generateHeightMap(double[] heightMap, int x, int y, int z, int sizeX, int sizeY, int sizeZ) {

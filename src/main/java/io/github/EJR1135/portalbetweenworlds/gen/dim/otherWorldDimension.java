@@ -37,7 +37,8 @@ public class otherWorldDimension extends Dimension implements TravelMessageProvi
     @Override
     public ChunkSource createChunkGenerator() {
         System.out.println("world: " + world);
-        long seed = 123L;
+        System.out.println("World seed: " + world.getSeed());
+        long seed = 2019460528L;
         return new otherWorldChunkGenerator(world, seed);
     }
     
