@@ -23,7 +23,7 @@ public class otherWorldBlocks {
         portalFrame = new otherWorldPortalFrame(
             Identifier.of(MOD_ID, "portal_frame")
         )
-        .setHardness(1.0F)
+        .setHardness(0.2F)
         .setSoundGroup(Block.STONE_SOUND_GROUP)
         .setTranslationKey(MOD_ID, "portal_frame");
         //otherWorldItems.Aercloud = (new ItemBlockAercloud(Aercloud.id));

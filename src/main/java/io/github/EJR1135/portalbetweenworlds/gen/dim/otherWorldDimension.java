@@ -19,8 +19,8 @@ import static io.github.EJR1135.portalbetweenworlds.gen.dim.otherWorldDimensions
 @EnvironmentInterface(value = EnvType.CLIENT, itf = TravelMessageProvider.class)
 public class otherWorldDimension extends Dimension implements TravelMessageProvider {
     public static final String
-        ENTERING_MESSAGE = "gui." + Identifier.of(MOD_ID, "ascending"),
-        LEAVING_MESSAGE = "gui." + Identifier.of(MOD_ID, "descending");
+        ENTERING_MESSAGE = "portalbetweenworlds.travel.kingsroad",
+        LEAVING_MESSAGE = "portalbetweenworlds.travel.betaworld";
 
     private final float[] colours = new float[4];
     public otherWorldDimension(int serialId) {

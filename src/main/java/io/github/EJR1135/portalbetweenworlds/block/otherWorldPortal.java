@@ -60,24 +60,19 @@ public class otherWorldPortal extends TranslucentBlock implements BlockTemplate,
     }
 
     public boolean create(World world, int i, int j, int k) {
-        System.out.println("creating");
         int l = 0;
         int i1 = 0;
         if (world.getBlockId(i - 1, j, k) == otherWorldBlocks.portalFrame.id || world.getBlockId(i + 1, j, k) == otherWorldBlocks.portalFrame.id) {
             l = 1;
-            System.out.println("first conditional");
         }
 
         if (world.getBlockId(i, j, k - 1) == otherWorldBlocks.portalFrame.id || world.getBlockId(i, j, k + 1) == otherWorldBlocks.portalFrame.id) {
             i1 = 1;
-            System.out.println("second conditional");
         }
 
         if (l == i1) {
-            System.out.println("l == i1");
             return false;
         } else {
-            System.out.println("l != i1");
             if (world.getBlockId(i - l, j, k - i1) == 0) {
                 i -= l;
                 k -= i1;
@@ -110,7 +105,6 @@ public class otherWorldPortal extends TranslucentBlock implements BlockTemplate,
             }
 
             world.pauseTicking = false;
-            System.out.println("finished");
             return true;
         }
     }

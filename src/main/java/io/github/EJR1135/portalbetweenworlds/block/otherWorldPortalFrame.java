@@ -19,27 +19,21 @@ public class otherWorldPortalFrame extends TemplateBlock {
         return true;
     }
 
-    @Override
-    public int getDroppedItemId(int meta, Random random) {
-        return Block.GLOWSTONE.id;
-    }
-
-    @Override
-    public int getDroppedItemCount(Random random) {
-        return 1 + random.nextInt(4); 
-    }
-
     public void onPlaced(World world, int i, int j, int k, int l) {
         world.setBlock(i, j, k, this.id);
         world.setBlockMeta(i, j, k, 1);
     }
 
-    public void afterBreak(World world, PlayerEntity entityplayer, int i, int j, int k, int l) {
-        //entityplayer.increaseStat(Stats.MINE_BLOCK[this.id], 1);
-        if (l == 0) {
-            this.dropStacks(world, i, j, k, l);
+    @Override
+    public void onBreak(World world, int x, int y, int z) {
+        if (!world.isRemote) {
+            world.spawnEntity(new net.minecraft.entity.ItemEntity(
+                world,
+                x + 0.5,
+                y + 0.5,
+                z + 0.5,
+                new net.minecraft.item.ItemStack(this)
+            ));
         }
-
-        this.dropStacks(world, i, j, k, l);
     }
 }

@@ -1,2 +1,4 @@
 # @ is a shorthand for the current mod id, which is portalbetweenworlds. E.g: tile.@.redclay.name
 tile.otherworld_portal.name=Portal
+portalbetweenworlds.travel.kingsroad=Traveling to Beta World
+portalbetweenworlds.travel.betaworld=Traveling to Kings Road
