@@ -188,7 +188,6 @@ public class otherWorldPortal extends TranslucentBlock implements BlockTemplate,
     @Environment(EnvType.CLIENT)
     public void randomDisplayTick(World world, int i, int j, int k, Random random) {
         if (random.nextInt(100) == 0) {
-            world.playSound((double) i + 0.5, (double) j + 0.5, (double) k + 0.5, "portal.portal", 1.0F, random.nextFloat() * 0.4F + 0.8F);
         }
 
         for (int l = 0; l < 4; ++l) {

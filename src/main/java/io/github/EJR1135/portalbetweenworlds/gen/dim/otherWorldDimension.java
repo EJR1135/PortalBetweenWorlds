@@ -33,7 +33,7 @@ public class otherWorldDimension extends Dimension implements TravelMessageProvi
         long seed = 2019460528L;
         return new otherWorldChunkGenerator(world, seed);
     }
-    
+
     /*
     @Override
     public float getTimeOfDay(long time, float delta) {

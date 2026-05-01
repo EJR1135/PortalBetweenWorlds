@@ -4,12 +4,18 @@
   "package": "io.github.EJR1135.portalbetweenworlds.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "ExampleMixin"
-  ],
-  "server": [
+    "otherWorldBedFixMixin",
+    "otherWorldSleepMixin",
+    "otherWorldRespawnFixMixin",
+    "PlayerManagerAccessor"
   ],
   "client": [
+    "otherWorldClientRespawnMixin",
+    "MinecraftAccessor",
+    "otherWorldTerrainScreenMixin",
+    "ClientNetworkHandlerAccessor"
   ],
+  "server": [],
   "injectors": {
     "defaultRequire": 1
   }
